@@ -13,6 +13,8 @@ extern llvm::cl::opt<bool> UseCDBResources;
 extern llvm::cl::opt<std::string> ToolResourceDir;
 extern llvm::cl::OptionCategory ExecutorCategory;
 
+
+    
 inline llvm::Error make_string_error(const llvm::Twine &Message) {
   return llvm::make_error<llvm::StringError>(Message,
                                              llvm::inconvertibleErrorCode());

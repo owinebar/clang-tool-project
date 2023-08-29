@@ -1,0 +1,112 @@
+{
+  "version": 7,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 27,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+	"name": "base",
+	"hidden": true,
+	"displayName": "Base",
+	"description": "Base configuration",
+	"binaryDir": "${sourceDir}/build/${presetName}",
+	"cacheVariables": {
+            "Clang_ROOT": {
+		"type": "PATH",
+		"value": "$env{CLANG_ROOT}"
+	    },
+	    "LLVM_ROOT": {
+		"type": "PATH",
+		"value": "$env{LLVM_ROOT}"
+	    }
+        },
+	"environment": {
+	    "CLANG_ROOT": "",
+	    "LLVM_ROOT": "",
+	    "CMAKE_CXX_COMPILER": "${CLANG_ROOT}/bin/clang++",
+	    "CMAKE_C_COMPILER": "${CLANG_ROOT}/bin/clang",
+	    "CMAKE_ASM_COMPILER": "${CLANG_ROOT}/bin/llvm-as"
+	},
+    },
+    {
+	"name": "base",
+	"hidden": true,
+	"displayName": "Base",
+	"description": "Base configuration",
+	"binaryDir": "${sourceDir}/build/${presetName}",
+	"cacheVariables": {
+            "Clang_ROOT": {
+		"type": "PATH",
+		"value": "$env{CLANG_ROOT}"
+	    },
+	    "LLVM_ROOT": {
+		"type": "PATH",
+		"value": "$env{LLVM_ROOT}"
+	    }
+        },
+	"environment": {
+	    "CLANG_ROOT": "",
+	    "LLVM_ROOT": "",
+	    "CMAKE_CXX_COMPILER": "${CLANG_ROOT}/bin/clang++",
+	    "CMAKE_C_COMPILER": "${CLANG_ROOT}/bin/clang",
+	    "CMAKE_ASM_COMPILER": "${CLANG_ROOT}/bin/llvm-as"
+	},
+    },
+    {
+	"name": "default",
+	"displayName": "Default Config",
+	"description": "Default build using Ninja generator",
+	"generator": "Ninja",
+	"inherits": "base"
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "default",
+      "configurePreset": "default"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "default",
+      "configurePreset": "default",
+      "output": {"outputOnFailure": true},
+      "execution": {"noTestsAction": "error", "stopOnFailure": true}
+    }
+  ],
+  "packagePresets": [
+    {
+      "name": "default",
+      "configurePreset": "default",
+      "generators": [
+        "TGZ"
+      ]
+    }
+  ],
+  "workflowPresets": [
+    {
+      "name": "default",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "default"
+        },
+        {
+          "type": "build",
+          "name": "default"
+        },
+        {
+          "type": "test",
+          "name": "default"
+        },
+        {
+          "type": "package",
+          "name": "default"
+        }
+      ]
+    }
+  ],
+}
+

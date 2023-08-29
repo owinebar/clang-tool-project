@@ -12,7 +12,7 @@
 #include "clang/Tooling/StandaloneExecution.h"
 #include "clang/Tooling/ToolExecutorPluginRegistry.h"
 #include "clang/Tooling/Tooling.h"
-#include "ExernalClangTool.h"
+#include "ExternalClangTool.h"
 #include "clang/Tooling/ArgumentsAdjusters.h"
 #include "clang/Driver/Driver.h"
 
